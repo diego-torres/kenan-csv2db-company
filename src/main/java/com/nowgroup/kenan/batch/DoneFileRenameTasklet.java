@@ -29,7 +29,7 @@ public class DoneFileRenameTasklet implements Tasklet {
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 		for (int i = 0; i < resource.length; i++) {
 			File f = resource[i].getFile();
-			File dest = new File(f.getName() + ".done");
+			File dest = new File(f.getCanonicalPath() + ".done");
 			f.renameTo(dest);
 		}
 		return RepeatStatus.FINISHED;
